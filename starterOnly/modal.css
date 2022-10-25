@@ -348,7 +348,6 @@ input[data-error]::after {
 
 .form-sent__text {
   text-align: center;
-  margin-top: 110%;
 }
 
 /* custom select styles */
