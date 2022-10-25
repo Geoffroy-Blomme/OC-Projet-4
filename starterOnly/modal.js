@@ -12,6 +12,12 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
+const submitBtn = document.querySelector(".btn-submit");
+const modalForm = document.querySelector(".modal-body form");
+const formSent =document.querySelector(".form-sent");
+const formSentCloseButton = document.querySelector(".btn-submit--close");
+const firstName = document.querySelector("#first");
+const lastName = document.querySelector("#last");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -74,4 +80,31 @@ function checkFailed(element, errorMsg){
 function checkSucceeded(element){
   let parent = element.parentElement;
   parent.setAttribute("data-error-visible","false");
+}
+
+// return True if all the data of the modal form is correct, wrong if at least one isn't
+function checkIfAllGood(){
+  return  checkIfNameValid(firstName,"Votre Prénom doit contenir au moins deux lettres")
+  & checkIfNameValid(lastName,"Votre Nom doit contenir au moins deux lettres")
+  & checkEmail(email);
+}
+
+// Changes the content of the modal to show the content when the form is sent.
+function modalChangeContent(){
+  //We start by getting the dimension of the form.
+  let modalFormWidth = modalForm.offsetWidth;
+  let modalFormHeight = modalForm.offsetHeight;
+  modalForm.style.display="none";
+  
+  formSent.style.width = modalFormWidth + "px";
+  formSent.style.height = modalFormHeight + "px";
+  formSent.style.display="flex";
+}
+
+// If the data of the form are correct, 
+function validate(){
+  if(checkIfAllGood()){
+    modalChangeContent();
+  }
+  
 }
