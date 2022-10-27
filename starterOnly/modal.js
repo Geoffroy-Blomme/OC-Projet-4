@@ -14,7 +14,7 @@ const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
 const modalForm = document.querySelector(".modal-body form");
-const formSent =document.querySelector(".form-sent");
+const formSent = document.querySelector(".form-sent");
 const formSentText = document.querySelector(".form-sent__text");
 const formSentCloseButton = document.querySelector(".btn-submit--close");
 const firstName = document.querySelector("#first");
@@ -50,6 +50,19 @@ function launchModal() {
 // close modal form
 function closeModal(){
   modalbg.style.display="none";
+  // If we close the modal, we want the inputs to be reset
+  resetAllInputs();
+}
+
+
+// resets all the inputs
+function resetAllInputs(){
+  allInputs.forEach(input => {
+    let parent = input.parentElement;
+    parent.setAttribute("data-error-visible","false");
+
+    input.value="";
+  });
 }
 
 // returns true and call the checkSuceeded function if name is valid,  returns false and call the checkFailed function  if it isn't
