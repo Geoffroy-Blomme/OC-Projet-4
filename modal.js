@@ -33,7 +33,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalCloseBtn.addEventListener("click",closeModal);
 formSentCloseButton.addEventListener("click",closeModal);
 
-// prevents the box to appear when the input is invalid
+// prevents the brower's box to appear when the input is invalid
 allInputs.forEach(element => {
   element.addEventListener( "invalid",
   function( event ) {
@@ -83,7 +83,7 @@ function checkIfNameValid(name,errorMsg){
   
 }
 
-// return true and call the checkSuceeded function if email is valid,  returns false and call the checkFailed functionif it isn't
+// return true and call the checkSuceeded function if email is valid,  returns false and call the checkFailed function if it isn't
 function checkEmail(email){
   let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(regex.test(email.value)){
@@ -184,15 +184,11 @@ function modalChangeContent(){
   formSent.style.width = modalFormWidth + "px";
   formSent.style.height = modalFormHeight + "px";
   formSent.style.display="flex";
-  // Si on reduit la resolution apres avoir donner une largeur fixe a formSent, on veut que celui-ci ne depasse pas
-  formSent.style.maxWidth = "100%";
-  
   formSentText.style.marginTop = (modalFormHeight/2) + "px";
-
 
 }
 
-// If the data of the form are correct, 
+// If the data of the form are correct, changes the content of the modal.
 function validate(){
   if(checkIfAllGood()){
     modalChangeContent();
